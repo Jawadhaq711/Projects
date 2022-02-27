@@ -1,0 +1,31 @@
+FROM ubuntu:latest
+LABEL MAINTAINER Mathew Jacob <mkjacob3@illinois.edu>
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get install --assume-yes git
+RUN apt-get --assume-yes install python3
+RUN apt-get --assume-yes install vim
+
+RUN apt-get --assume-yes install clang llvm
+
+RUN apt-get update
+RUN apt-get install -y make
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get -y install cmake
+RUN apt-get update
+RUN apt --assume-yes install valgrind
+RUN apt-get update && apt-get install -y lsb-release && apt-get clean all
+# RUN apt-get install --assume-yes catch2
+RUN echo "Finished installing the file."
+RUN apt-get -y install python3-pip
+RUN pip install numpy
+RUN pip install pandas
+RUN pip install Pillow
+RUN pip install pytesseract
+
+FROM spmallick/opencv-docker:opencv
+
+RUN mkdir project
+EXPOSE 80
+CMD ["bash"]

@@ -1,0 +1,1 @@
+/usr/bin/c++      -rdynamic CMakeFiles/sudoku_tests.dir/tests/test.cc.o CMakeFiles/sudoku_tests.dir/src/solver.cpp.o  -o sudoku_tests 

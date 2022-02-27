@@ -1,0 +1,26 @@
+FROM spmallick/opencv-docker:opencv
+
+LABEL maintainer="Mathew Jacob <mkjacob3@illinois.edu>"
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get install --assume-yes git
+RUN apt-get --assume-yes install python3
+RUN apt-get --assume-yes install vim
+
+
+RUN apt-get update
+RUN apt-get install -y make
+
+RUN apt-get update
+RUN apt --assume-yes install valgrind
+RUN apt-get update && apt-get install -y lsb-release && apt-get clean all
+# RUN apt-get install --assume-yes catch2
+
+
+
+VOLUME ["/source"]
+WORKDIR /source
+CMD ["bash"]
